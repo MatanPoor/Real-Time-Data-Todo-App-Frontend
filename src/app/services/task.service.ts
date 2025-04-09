@@ -17,20 +17,20 @@ export class TaskService {
   // Get all tasks
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.apiUrl).pipe(
-      catchError(this.handleError)  // Handle error
+      catchError(this.handleError)  
     );
   }
 
   // Get a single task by ID
   getTaskById(id: string): Observable<Task> {
     return this.http.get<Task>(`${this.apiUrl}/${id}`).pipe(
-      catchError(this.handleError)  // Handle error
+      catchError(this.handleError)  
     );
   }
 
   createTask(task: Task): Observable<Task> {
     return this.http.post<Task>(this.apiUrl, task).pipe(
-      catchError(this.handleError)  // Handle error
+      catchError(this.handleError)  
     );
   }
 

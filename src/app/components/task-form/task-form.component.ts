@@ -67,7 +67,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
       this.taskService.getTaskById(this.taskId).subscribe({
         next: (task: Task) => {
           this.taskForm.patchValue({
-            ...task,
+             ...task,
             dueDate: task.dueDate ? new Date(task.dueDate) : null
           });
           // Lock the task immediately
@@ -137,8 +137,8 @@ export class TaskFormComponent implements OnInit, OnDestroy {
         ? formValue.dueDate.toISOString()
         : new Date(formValue.dueDate).toISOString(),
       completed: formValue.completed,
-      isLocked: true,               // ✅ still locked during update
-      lockedBy: socketId            // ✅ use consistent ID
+      isLocked: true,               // still locked during update
+      lockedBy: socketId            // use consistent ID
     };
   
     const saveObservable = this.isEditMode
@@ -147,7 +147,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
   
     saveObservable.subscribe({
       next: () => {
-        this.socketService.emitTaskUnlock(this.taskId, socketId); // ✅ Unlock via service
+        this.socketService.emitTaskUnlock(this.taskId, socketId); // Unlock via service
         this.router.navigate(['/']);
       },
       error: () => {

@@ -21,12 +21,12 @@ export class SocketService {
     });
   }
 
- // Observable version for subscriptions (already exists and keep it)
+ // Observable version for subscriptions 
 getSocketId$(): Observable<string> {
     return this.socketId$.asObservable();
   }
   
-  // Synchronous getter version for quick access like in onSubmit
+  
   getSocketId(): string {
     return this.socketId$.getValue();
   }
