@@ -1,27 +1,107 @@
-# TodoFrontend
+# ToDo App (Real-Time)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
+This project is a real-time To-Do List application built with the following stack:
 
-## Development server
+- **Frontend:** Angular with Angular Material
+- **Backend:** Node.js with Express.js
+- **Database:** MongoDB
+- **Real-time Communication:** Socket.IO
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- Create, update, and delete tasks
+- Task priority and due date
+- Real-time synchronization of tasks across multiple clients
+- Edit-locking to prevent simultaneous edits
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+##  Setup and Run Instructions
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
 
-## Running unit tests
+- Node.js (v22+)
+- Angular CLI (v17+)
+- MongoDB (local or cloud instance)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 1. Clone the Repository
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+git clone https://github.com/your-username/your-todo-app.git
+cd your-todo-app
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 2. Install Backend Dependencies
+
+```bash
+npm install
+```
+
+### 3. Start MongoDB
+
+Make sure your MongoDB server is running on `mongodb://localhost:27017/todo-app` or update the connection string in `server.js`.
+
+### 4. Run Backend Server
+
+```bash
+npm start
+```
+
+This will start the backend on `http://localhost:5000`.
+
+### 5. Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+### 6. Run Angular App
+
+```bash
+ng serve
+```
+
+The frontend will be available at `http://localhost:4200`
+
+---
+
+## 📐 Design Decisions & Patterns
+
+### Folder Structure
+
+- Angular frontend is organized by **features** and **concerns**, with separate folders for components and services.
+- Node.js backend uses the **Repository Pattern** for data handling logic.
+
+### Real-Time Functionality
+
+- Implemented using **Socket.IO**.
+- Updates (create, edit, delete) are emitted from the server and received in the client using a custom `SocketService`.
+
+### Edit Locking
+
+- Each task has `isLocked` and `lockedBy` fields in the database.
+- When a user begins editing a task, it is locked to prevent other users from editing or deleting it concurrently.
+
+### Component Responsibility
+
+- Each Angular component has a **single responsibility**.
+  - `task-list.component.ts` for displaying tasks.
+  - `task-form.component.ts` for adding/updating/deleting tasks.
+
+### UI/UX
+
+- Angular Material components for clean and responsive UI.
+- Priority dropdown defaults to `Low`.
+- Clear button separation for add/update/delete actions.
+
+---
+
+## ✅ Notes
+
+- Make sure ports 4200 (frontend) and 5000 (backend) are open.
+- Real-time updates work seamlessly when multiple clients are open.
+
+---
+
+
+
