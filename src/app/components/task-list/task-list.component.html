@@ -1,0 +1,35 @@
+<!-- Add New Task Button -->
+<div class="task-list-header">
+    <button mat-raised-button class="add-task-button" (click)="addTask()">Add New Task</button>
+  </div>
+  
+  <!-- Spinner while loading -->
+  <div *ngIf="loadingSpinner" class="loading-spinner">
+    <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+  </div>
+  
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+  <!-- Message if no tasks -->
+  <div *ngIf="tasks.length === 0 && !loadingSpinner && !errorMessage">
+    No tasks available.
+  </div>
+  
+  <!-- Task list -->
+  <ul>
+    <li *ngFor="let task of tasks">
+      <mat-card>
+        <h3>{{ task.title }}</h3>
+        <p>{{ task.description }}</p>
+        <p><strong>Priority:</strong> {{ task.priority }}</p>
+        <p><strong>Due Date:</strong> {{ task.dueDate ? (task.dueDate | date: 'dd/MM/yyyy') : 'N/A' }}</p>
+        <p><strong>Completed:</strong> {{ task.completed ? 'Yes' : 'No' }}</p>
+        <button  (click)="editTask(task._id)">Edit</button>
+        <button mat-button color="warn" (click)="deleteTask(task._id)">Delete</button>
+      </mat-card>
+    </li>
+  </ul>
+  

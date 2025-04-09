@@ -1,0 +1,21 @@
+.app-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  header {
+    background-color: #6200ea;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  main {
+    margin-top: 20px;
+    width: 100%;
+  }
+  

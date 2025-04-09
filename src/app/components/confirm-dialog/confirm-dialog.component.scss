@@ -1,0 +1,97 @@
+/* Basic styling for the confirm dialog */
+.mat-dialog-container {
+    width: 400px;  // Set the width of the dialog
+    padding: 20px;  // Add some padding inside the dialog
+    text-align: center;  // Center the content
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Title styling */
+  .mat-dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;  // Dark color for the title
+    margin-bottom: 10px;  // Space below the title
+  }
+  
+  /* Content styling */
+  .mat-dialog-content {
+    font-size: 16px;
+    color: #555;  // Lighter color for the content
+    margin-bottom: 20px;  // Space below the content
+  }
+  
+  /* Actions (buttons) styling */
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: space-between;  // Space buttons apart
+    margin-top: 20px;
+  }
+  
+  /* Button styling */
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  
+    &.mat-button {
+      background-color: #f1f1f1;  // Light background for the cancel button
+    }
+  
+    &.mat-button.mat-warn {
+      background-color: #f44336;  // Red background for the delete button
+      color: white;
+    }
+  
+    &:hover {
+      background-color: #ddd;  // Light gray hover effect
+    }
+  
+    &:focus {
+      outline: none;  // Remove outline when focused
+    }
+    &.mat-button.mat-warn:hover {
+    background-color: #d32f2f;  // Slightly darker red on hover
+    }
+    &.mat-button:not(.mat-warn):hover {
+    background-color: #e0e0e0;
+    }
+  }
+  
+  /* Optional: For error message styling, if any */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  
+    textarea.mat-input-element {
+      height: 56px !important; // Match input field height
+      resize: none;
+    }
+  
+    .actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+    }
+  }
+
+  

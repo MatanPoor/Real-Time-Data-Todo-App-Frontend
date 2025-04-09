@@ -1,0 +1,54 @@
+<form *ngIf="!isDeleteMode" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <!-- Title Field -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" required />
+        <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+          Title is required
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Description Field -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+  
+      <!-- Priority Field -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority" required>
+          <mat-option value="Low">Low</mat-option>
+          <mat-option value="Medium">Medium</mat-option>
+          <mat-option value="High">High</mat-option>
+        </mat-select>
+        <mat-error *ngIf="taskForm.get('priority')?.hasError('required')">
+          Priority is required
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Due Date Field -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="taskForm.get('dueDate')?.hasError('required')">
+          Due date is required
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Completed Checkbox (Aligned with form fields) -->
+      <mat-checkbox formControlName="completed" class="checkbox-field">Completed</mat-checkbox>
+    </div>
+  
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid || submitting">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+      <button mat-button color="warn" type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+  
